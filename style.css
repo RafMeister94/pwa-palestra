@@ -475,3 +475,56 @@ button:hover:not(:disabled) {
   color: #1e3a8a;
   font-weight: bold;
 }
+#timerWorkout {
+  margin: 0 0 32px;
+  padding: 20px;
+  border: 1px solid #bfdbfe;
+  border-radius: 16px;
+  background: #eff6ff;
+}
+
+#titoloWorkout {
+  margin: 0;
+  color: #1e3a8a;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#tempoWorkout {
+  margin: 10px 0 16px;
+  color: #1d4ed8;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+#iniziaWorkout {
+  display: block;
+  width: 100%;
+  margin: 16px 0 0;
+  padding: 15px;
+  border: 0;
+  border-radius: 12px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+}
+
+#terminaWorkout {
+  display: block;
+  width: 100%;
+  margin: 12px 0 0;
+  padding: 13px;
+  border: 0;
+  border-radius: 12px;
+  background: #64748b;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.selettore-giorni {
+  margin-top: 8px;
+}
