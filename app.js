@@ -1563,3 +1563,192 @@ osservatoreSerie.observe(document.querySelector("main"), {
   childList: true,
   subtree: true
 });
+const chiaveWorkoutAttivo = "workoutAttivo";
+let workoutAttivo = leggiDatiSalvati(chiaveWorkoutAttivo, null);
+let intervalloWorkout;
+
+if (
+  !workoutAttivo ||
+  typeof workoutAttivo.iniziato !== "number"
+) {
+  workoutAttivo = null;
+}
+
+const pannelloWorkout = document.createElement("section");
+pannelloWorkout.id = "timerWorkout";
+
+const titoloWorkout = document.createElement("p");
+titoloWorkout.id = "titoloWorkout";
+
+const tempoWorkout = document.createElement("p");
+tempoWorkout.id = "tempoWorkout";
+
+const pulsanteIniziaWorkout = document.createElement("button");
+pulsanteIniziaWorkout.type = "button";
+pulsanteIniziaWorkout.id = "iniziaWorkout";
+pulsanteIniziaWorkout.textContent = "Inizia workout";
+
+const pulsanteTerminaWorkout = document.createElement("button");
+pulsanteTerminaWorkout.type = "button";
+pulsanteTerminaWorkout.id = "terminaWorkout";
+pulsanteTerminaWorkout.textContent = "Termina timer";
+
+pannelloWorkout.appendChild(titoloWorkout);
+pannelloWorkout.appendChild(tempoWorkout);
+pannelloWorkout.appendChild(pulsanteIniziaWorkout);
+pannelloWorkout.appendChild(pulsanteTerminaWorkout);
+
+document.querySelector("main").prepend(pannelloWorkout);
+
+function formattaDurataWorkout(secondi) {
+  const ore = Math.floor(secondi / 3600);
+  const minuti = Math.floor((secondi % 3600) / 60);
+  const secondiRimanenti = secondi % 60;
+
+  if (ore > 0) {
+    return `${ore}:${String(minuti).padStart(2, "0")}:${String(
+      secondiRimanenti
+    ).padStart(2, "0")}`;
+  }
+
+  return `${minuti}:${String(secondiRimanenti).padStart(2, "0")}`;
+}
+
+function secondiWorkoutTrascorsi() {
+  if (!workoutAttivo) {
+    return 0;
+  }
+
+  return Math.floor((Date.now() - workoutAttivo.iniziato) / 1000);
+}
+
+function aggiornaTimerWorkout() {
+  if (!workoutAttivo) {
+    titoloWorkout.textContent = "Nessun workout in corso";
+    tempoWorkout.textContent = "0:00";
+    pulsanteIniziaWorkout.hidden = false;
+    pulsanteTerminaWorkout.hidden = true;
+    return;
+  }
+
+  titoloWorkout.textContent = "Workout in corso";
+  tempoWorkout.textContent = formattaDurataWorkout(
+    secondiWorkoutTrascorsi()
+  );
+
+  pulsanteIniziaWorkout.hidden = true;
+  pulsanteTerminaWorkout.hidden = false;
+}
+
+function avviaTimerWorkout() {
+  workoutAttivo = {
+    iniziato: Date.now()
+  };
+
+  localStorage.setItem(
+    chiaveWorkoutAttivo,
+    JSON.stringify(workoutAttivo)
+  );
+
+  clearInterval(intervalloWorkout);
+  intervalloWorkout = setInterval(aggiornaTimerWorkout, 1000);
+
+  aggiornaTimerWorkout();
+}
+
+function fermaTimerWorkout() {
+  clearInterval(intervalloWorkout);
+
+  workoutAttivo = null;
+  localStorage.removeItem(chiaveWorkoutAttivo);
+
+  aggiornaTimerWorkout();
+}
+
+pulsanteIniziaWorkout.addEventListener("click", () => {
+  avviaTimerWorkout();
+});
+
+pulsanteTerminaWorkout.addEventListener("click", () => {
+  const conferma = window.confirm(
+    "Vuoi terminare il timer senza registrare un allenamento nello storico?"
+  );
+
+  if (conferma) {
+    fermaTimerWorkout();
+  }
+});
+
+document.querySelectorAll(".completa-giorno").forEach((pulsante) => {
+  pulsante.addEventListener("click", () => {
+    if (!workoutAttivo || !storicoAllenamenti[0]) {
+      return;
+    }
+
+    const durataSecondi = secondiWorkoutTrascorsi();
+
+    storicoAllenamenti[0].inizioWorkout = workoutAttivo.iniziato;
+    storicoAllenamenti[0].durataSecondi = durataSecondi;
+
+    localStorage.setItem(
+      chiaveStorico,
+      JSON.stringify(storicoAllenamenti)
+    );
+
+    mostraStorico();
+    fermaTimerWorkout();
+  });
+});
+
+listaStorico.addEventListener("click", (evento) => {
+  const voceCliccata = evento.target.closest("li");
+
+  if (!voceCliccata) {
+    return;
+  }
+
+  const vociStorico = [...listaStorico.querySelectorAll("li")];
+  const indice = vociStorico.indexOf(voceCliccata);
+  const allenamento = storicoAllenamenti[indice];
+
+  window.setTimeout(() => {
+    if (
+      !allenamento ||
+      dettaglioStorico.hidden ||
+      !allenamento.durataSecondi
+    ) {
+      return;
+    }
+
+    if (dettaglioStorico.querySelector(".durata-workout")) {
+      return;
+    }
+
+    const durata = document.createElement("p");
+    durata.className = "durata-workout";
+
+    const oraInizio = new Date(
+      allenamento.inizioWorkout
+    ).toLocaleTimeString("it-IT", {
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+
+    durata.textContent =
+      `Inizio: ${oraInizio} — Durata: ${formattaDurataWorkout(
+        allenamento.durataSecondi
+      )}`;
+
+    dettaglioStorico.insertBefore(
+      durata,
+      dettaglioStorico.querySelector("ul") ||
+        dettaglioStorico.lastElementChild.nextSibling
+    );
+  }, 0);
+}, true);
+
+if (workoutAttivo) {
+  intervalloWorkout = setInterval(aggiornaTimerWorkout, 1000);
+}
+
+aggiornaTimerWorkout();
