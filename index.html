@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La mia palestra</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+<h1>La mia scheda palestra</h1>
+
+<main>
+  <nav class="selettore-giorni" aria-label="Scelta del giorno">
+    <button
+      type="button"
+      class="selettore-giorno giorno-attivo"
+      data-giorno="1"
+    >
+      Giorno 1
+    </button>
+
+    <button
+      type="button"
+      class="selettore-giorno"
+      data-giorno="2"
+    >
+      Giorno 2
+    </button>
+
+    <button
+  type="button"
+  class="selettore-giorno"
+  data-giorno="3"
+>
+  Giorno 3
+</button>
+
+<button
+  type="button"
+  class="selettore-giorno"
+  data-giorno="4"
+>
+  Giorno 4
+</button>
+  </nav>
+  <section id="timerRecupero" hidden>
+  <p id="titoloRecupero">Recupero in corso</p>
+  <p id="tempoRecupero" aria-live="polite">0:00</p>
+  <button id="annullaRecupero" type="button">Annulla timer</button>
+</section>
+
+  <section class="contenuto-giorno" data-giorno="1">
+    <h2>Giorno 1</h2>
+
+<ul>
+  <li>
+    <label>
+      <input type="checkbox" class="esercizio" data-esercizio="croci-ai-cavi">
+      <strong>Croci ai cavi</strong><br>
+      3 serie × 12 ripetizioni<br>
+      Recupero: 1 min
+    </label>
+    <button type="button" class="avvia-recupero"
+        data-secondi="60"
+        data-nome="Croci ai cavi">
+  Avvia recupero — 1 min
+</button>
+  </li>
+
+  <li>
+    <label>
+      <input type="checkbox" class="esercizio" data-esercizio="dip">
+      <strong>Dip</strong><br>
+      3 serie × 8 ripetizioni<br>
+      Recupero: 2 min
+    </label>
+    <button type="button" class="avvia-recupero"
+        data-secondi="120"
+        data-nome="Dip">
+  Avvia recupero — 2 min
+</button>
+  </li>
+
+  <li>
+    <label>
+      <input type="checkbox" class="esercizio" data-esercizio="spinte-manubri">
+      <strong>Spinte manubri panca piana</strong><br>
+      3 serie × da 6 a 10 ripetizioni<br>
+      Recupero: 2 min
+    </label>
+    <button type="button" class="avvia-recupero"
+        data-secondi="120"
+        data-nome="Spinte manubri panca piana">
+  Avvia recupero — 2 min
+</button>
+  </li>
+
+  <li>
+    <label>
+      <input type="checkbox" class="esercizio" data-esercizio="panca-45-multipower">
+      <strong>Panca a 45° multipower</strong><br>
+      3 serie × da 6 a 10 ripetizioni<br>
+      Recupero: 2 min
+    </label>
+<button type="button" class="avvia-recupero"
+        data-secondi="120"
+        data-nome="Panca a 45° multipower">
+  Avvia recupero — 2 min
+</button>
+  </li>
+
+  <li>
+    <label>
+      <input type="checkbox" class="esercizio" data-esercizio="bayesian-curl">
+      <strong>Bayesian curl</strong><br>
+      3 serie × 8 per braccio<br>
+      Recupero: 30 sec alternati
+    </label>
+    <button type="button" class="avvia-recupero"
+        data-secondi="30"
+        data-nome="Bayesian curl">
+  Avvia recupero — 30 sec
+</button>
+  </li>
+
+  <li>
+    <label>
+      <input type="checkbox" class="esercizio" data-esercizio="spider-curl">
+      <strong>Spider curl</strong><br>
+      3 serie × da 8 a 12 ripetizioni<br>
+      Recupero: 1 min e 30 sec
+    </label>
+    <button type="button" class="avvia-recupero"
+        data-secondi="90"
+        data-nome="Spider curl">
+  Avvia recupero — 1 min e 30 sec
+</button>
+  </li>
+</ul>
+  <button class="completa-giorno" data-giorno="1">Segna come completato</button>
+  <button class="ricomincia-giorno" data-giorno="1">Ricomincia allenamento</button>
+  </section>
+
+<section class="contenuto-giorno" data-giorno="2" hidden>
+  <h2>Giorno 2</h2>
+
+  <ul>
+    <li>
+      <label>
+        <input type="checkbox" class="esercizio" data-esercizio="leg-extension">
+        <strong>Leg extension</strong><br>
+        5 serie × da 10 a 15 ripetizioni<br>
+        Recupero: 1 min e 30 sec
+      </label>
+      <button type="button" class="avvia-recupero"
+              data-secondi="90" data-nome="Leg extension">
+        Avvia recupero — 1 min e 30 sec
+      </button>
+    </li>
+
+    <li>
+      <label>
+        <input type="checkbox" class="esercizio" data-esercizio="leg-curl">
+        <strong>Leg curl</strong><br>
+        5 serie × da 10 a 15 ripetizioni<br>
+        Recupero: 1 min e 30 sec
+      </label>
+      <button type="button" class="avvia-recupero"
+              data-secondi="90" data-nome="Leg curl">
+        Avvia recupero — 1 min e 30 sec
+      </button>
+    </li>
+
+    <li>
+      <label>
+        <input type="checkbox" class="esercizio" data-esercizio="hip-thrust">
+        <strong>Hip thrust</strong><br>
+        5 serie × da 10 a 15 ripetizioni<br>
+        Recupero: 1 min e 30 sec
+      </label>
+      <button type="button" class="avvia-recupero"
+              data-secondi="90" data-nome="Hip thrust">
+        Avvia recupero — 1 min e 30 sec
+      </button>
+    </li>
+
+    <li>
+      <label>
+        <input type="checkbox" class="esercizio" data-esercizio="pressa-orizzontale">
+        <strong>Pressa orizzontale</strong><br>
+        5 serie × da 6 a 10 ripetizioni<br>
+        Recupero: 2 min
+      </label>
+      <button type="button" class="avvia-recupero"
+              data-secondi="120" data-nome="Pressa orizzontale">
+        Avvia recupero — 2 min
+      </button>
+    </li>
+
+    <li>
+      <label>
+        <input type="checkbox" class="esercizio" data-esercizio="affondi-camminata">
+        <strong>Affondi in camminata</strong><br>
+        3 serie × 16 passi<br>
+        Recupero: 2 min
+      </label>
+      <button type="button" class="avvia-recupero"
+              data-secondi="120" data-nome="Affondi in camminata">
+        Avvia recupero — 2 min
+      </button>
+    </li>
+  </ul>
+
+  <button type="button" class="completa-giorno" data-giorno="2">
+    Completa tutti gli esercizi
+  </button>
+
+  <button type="button" class="ricomincia-giorno" data-giorno="2">
+    Ricomincia allenamento
+  </button>
+</section>
+<section class="contenuto-giorno" data-giorno="3" hidden>
+  <h2>Giorno 3</h2>
+
+  <ul>
+    <li>
+      <label>
+        <input type="checkbox" class="esercizio" data-esercizio="pull-down-supino">
+        <strong>Pull down supino su panca a 45°</strong><br>
+        3 serie × 12 ripetizioni<br>
+        Recupero: 1 min
+      </label>
+      <button type="button" class="avvia-recupero"
+              data-secondi="60" data-nome="Pull down supino">
+        Avvia recupero — 1 min
+      </button>
+    </li>
+
+    <li>
+      <label>
+        <input type="checkbox" class="esercizio" data-esercizio="pulley-mono">
+        <strong>Pulley mono</strong><br>
+        3 serie × 8 per lato<br>
+        Recupero: 1 min alternato
+      </label>
+      <button type="button" class="avvia-recupero"
+              data-secondi="60" data-nome="Pulley mono">
+        Avvia recupero — 1 min
+      </button>
+    </li>
+
+    <li>
+      <label>
+        <input type="checkbox" class="esercizio" data-esercizio="trazioni-neutra">
+        <strong>Trazioni presa neutra</strong><br>
+        3 serie × 8 ripetizioni<br>
+        Recupero: 2 min
+      </label>
+      <button type="button" class="avvia-recupero"
+              data-secondi="120" data-nome="Trazioni presa neutra">
+        Avvia recupero — 2 min
+      </button>
+    </li>
+
+    <li>
+      <label>
+        <input type="checkbox" class="esercizio" data-esercizio="low-row">
+        <strong>Low row</strong><br>
+        3 serie × da 8 a 12 ripetizioni<br>
+        Recupero: 2 min
+      </label>
+      <button type="button" class="avvia-recupero"
+              data-secondi="120" data-nome="Low row">
+        Avvia recupero — 2 min
+      </button>
+    </li>
+
+    <li>
+      <label>
+        <input type="checkbox" class="esercizio" data-esercizio="push-down">
+        <strong>Push down</strong><br>
+        3 serie × da 8 a 12 ripetizioni<br>
+        Recupero: 30 sec alternati
+      </label>
+      <button type="button" class="avvia-recupero"
+              data-secondi="30" data-nome="Push down">
+        Avvia recupero — 30 sec
+      </button>
+    </li>
+
+    <li>
+      <label>
+        <input type="checkbox" class="esercizio" data-esercizio="french-press">
+        <strong>French press</strong><br>
+        3 serie × da 8 a 12 ripetizioni<br>
+        Recupero: 1 min e 30 sec
+      </label>
+      <button type="button" class="avvia-recupero"
+              data-secondi="90" data-nome="French press">
+        Avvia recupero — 1 min e 30 sec
+      </button>
+    </li>
+  </ul>
+
+  <button type="button" class="completa-giorno" data-giorno="3">
+    Completa tutti gli esercizi
+  </button>
+
+  <button type="button" class="ricomincia-giorno" data-giorno="3">
+    Ricomincia allenamento
+  </button>
+</section>
+<section class="contenuto-giorno" data-giorno="4" hidden>
+  <h2>Giorno 4</h2>
+
+  <ul>
+    <li>
+      <label>
+        <input type="checkbox" class="esercizio" data-esercizio="hyperextension">
+        <strong>Hyperextension</strong><br>
+        2 serie × 8 ripetizioni<br>
+        Recupero: 1 min e 30 sec
+      </label>
+      <button type="button" class="avvia-recupero"
+              data-secondi="90" data-nome="Hyperextension">
+        Avvia recupero — 1 min e 30 sec
+      </button>
+    </li>
+
+    <li>
+      <label>
+        <input type="checkbox" class="esercizio" data-esercizio="squat">
+        <strong>Squat</strong><br>
+        3 serie × 6 ripetizioni<br>
+        Recupero: 3 min
+      </label>
+      <button type="button" class="avvia-recupero"
+              data-secondi="180" data-nome="Squat">
+        Avvia recupero — 3 min
+      </button>
+    </li>
+
+    <li>
+      <label>
+        <input type="checkbox" class="esercizio" data-esercizio="croci-manubri">
+        <strong>Croci manubri panca piana</strong><br>
+        3 serie × 12 ripetizioni<br>
+        Recupero: 1 min
+      </label>
+      <button type="button" class="avvia-recupero"
+              data-secondi="60" data-nome="Croci manubri panca piana">
+        Avvia recupero — 1 min
+      </button>
+    </li>
+
+    <li>
+      <label>
+        <input type="checkbox" class="esercizio" data-esercizio="piegamenti-zavorrati">
+        <strong>Piegamenti braccia zavorrati</strong><br>
+        3 serie × massimo con 20 kg<br>
+        Recupero: 2 min
+      </label>
+      <button type="button" class="avvia-recupero"
+              data-secondi="120" data-nome="Piegamenti braccia zavorrati">
+        Avvia recupero — 2 min
+      </button>
+    </li>
+
+    <li>
+      <label>
+        <input type="checkbox" class="esercizio" data-esercizio="rematore-manubrio">
+        <strong>Rematore manubrio</strong><br>
+        3 serie × 10 per braccio<br>
+        Recupero: 1 min alternato
+      </label>
+      <button type="button" class="avvia-recupero"
+              data-secondi="60" data-nome="Rematore manubrio">
+        Avvia recupero — 1 min
+      </button>
+    </li>
+
+    <li>
+      <label>
+        <input type="checkbox" class="esercizio" data-esercizio="trazioni">
+        <strong>Trazioni</strong><br>
+        3 serie × 8 ripetizioni<br>
+        Recupero: 2 min
+      </label>
+      <button type="button" class="avvia-recupero"
+              data-secondi="120" data-nome="Trazioni">
+        Avvia recupero — 2 min
+      </button>
+    </li>
+  </ul>
+
+  <button type="button" class="completa-giorno" data-giorno="4">
+    Completa tutti gli esercizi
+  </button>
+
+  <button type="button" class="ricomincia-giorno" data-giorno="4">
+    Ricomincia allenamento
+  </button>
+</section>
+</main>
+<section id="progressiPesi">
+  <h2>Progressi pesi</h2>
+
+  <label for="selettoreEsercizio">
+    Scegli un esercizio:
+  </label>
+
+  <select id="selettoreEsercizio">
+    <option value="">Nessun esercizio disponibile</option>
+  </select>
+
+  <div id="graficoPesi" aria-live="polite">
+    Completa un allenamento con almeno un peso per vedere il grafico.
+  </div>
+</section>
+<section id="storicoAllenamenti">
+  <h2>Storico allenamenti</h2>
+  <button id="resetStorico" type="button">
+  Cancella storico allenamenti
+</button>
+  <ul id="listaStorico">
+    <li>Nessun allenamento registrato.</li>
+  </ul>
+</section>
+  <script src="app.js"></script>
+</body>
+</html>

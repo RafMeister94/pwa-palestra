@@ -1,0 +1,16 @@
+{
+  "name": "La mia scheda palestra",
+  "short_name": "Palestra",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#e5e7eb",
+  "theme_color": "#2563eb",
+  "lang": "it",
+  "icons": [
+    {
+      "src": "icona-palestra.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

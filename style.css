@@ -1,0 +1,432 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 32px 20px 48px;
+  background: #f1f5f9;
+  color: #1e293b;
+  font-family: Arial, sans-serif;
+}
+
+h1,
+main,
+#progressiPesi,
+#storicoAllenamenti {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  color: #0f172a;
+  font-size: 30px;
+}
+
+h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 22px;
+}
+
+main,
+#progressiPesi,
+#storicoAllenamenti {
+  padding: 24px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+#progressiPesi,
+#storicoAllenamenti {
+  margin-top: 24px;
+}
+
+.selettore-giorni {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.selettore-giorni button {
+  margin: 0;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 10px;
+  background: #e2e8f0;
+  color: #334155;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.selettore-giorni .giorno-attivo {
+  background: #2563eb;
+  color: white;
+}
+
+.contenuto-giorno ul {
+  margin: 20px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contenuto-giorno li {
+  margin: 12px 0;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.contenuto-giorno li > label {
+  display: block;
+  line-height: 1.55;
+  cursor: pointer;
+}
+
+.contenuto-giorno li strong {
+  color: #0f172a;
+  font-size: 17px;
+}
+
+.esercizio {
+  margin-right: 10px;
+  accent-color: #2563eb;
+  transform: scale(1.2);
+}
+
+.contenitore-peso {
+  margin-top: 12px;
+}
+
+.campo-peso {
+  width: 100px;
+  margin-left: 6px;
+  padding: 8px;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+  background: white;
+  color: #0f172a;
+}
+
+.avvia-recupero {
+  margin-top: 12px;
+  padding: 9px 12px;
+  border: 1px solid #2563eb;
+  border-radius: 8px;
+  background: white;
+  color: #2563eb;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.completa-giorno,
+.ricomincia-giorno,
+#annullaRecupero,
+#resetStorico {
+  margin-top: 8px;
+  padding: 11px 14px;
+  border: 0;
+  border-radius: 9px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.completa-giorno {
+  background: #2563eb;
+}
+
+.completa-giorno:disabled {
+  background: #16a34a;
+  cursor: default;
+}
+
+.ricomincia-giorno,
+#annullaRecupero {
+  margin-left: 8px;
+  background: #64748b;
+}
+
+#resetStorico {
+  margin: 12px 0;
+  background: #b91c1c;
+}
+
+#timerRecupero {
+  margin-bottom: 20px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #dbeafe;
+}
+
+#titoloRecupero {
+  margin: 0;
+  color: #1e3a8a;
+  font-weight: bold;
+}
+
+#tempoRecupero {
+  margin: 8px 0;
+  color: #1d4ed8;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+#progressiPesi label {
+  display: block;
+  margin-top: 16px;
+  font-weight: bold;
+}
+
+#selettoreEsercizio {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+  background: white;
+  color: #0f172a;
+}
+
+#graficoPesi {
+  margin-top: 20px;
+}
+
+#listaStorico {
+  margin: 0;
+  padding-left: 20px;
+}
+
+#listaStorico li {
+  margin: 12px 0;
+  line-height: 1.5;
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(0.95);
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 20px 14px 36px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  main,
+  #progressiPesi,
+  #storicoAllenamenti {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .selettore-giorni button {
+    flex: 1 1 40%;
+  }
+
+  .ricomincia-giorno,
+  #annullaRecupero {
+    margin-left: 0;
+  }
+
+  .completa-giorno,
+  .ricomincia-giorno {
+    width: 100%;
+  }
+}
+.contenuto-giorno li:has(.esercizio:checked) {
+  border-color: #86efac;
+  background: #f0fdf4;
+}
+
+.contenuto-giorno li:has(.esercizio:checked) strong {
+  color: #166534;
+  text-decoration: line-through;
+}
+.modifica-esercizio {
+  margin-top: 12px;
+  padding: 8px 12px;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+  background: white;
+  color: #334155;
+  cursor: pointer;
+  font-weight: bold;
+}
+.aggiungi-esercizio {
+  margin: 8px 0;
+  padding: 10px 14px;
+  border: 1px dashed #2563eb;
+  border-radius: 8px;
+  background: white;
+  color: #2563eb;
+  cursor: pointer;
+  font-weight: bold;
+}
+.elimina-esercizio {
+  margin: 8px 0 0 8px;
+  padding: 8px 12px;
+  border: 1px solid #dc2626;
+  border-radius: 8px;
+  background: white;
+  color: #b91c1c;
+  cursor: pointer;
+  font-weight: bold;
+}
+#eserciziRimossi {
+  max-width: 720px;
+  margin: 24px auto;
+  padding: 24px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+#eserciziRimossi ul {
+  padding-left: 20px;
+}
+
+#eserciziRimossi li {
+  margin: 10px 0;
+}
+
+.ripristina-esercizio {
+  margin-left: 12px;
+  padding: 7px 10px;
+  border: 1px solid #16a34a;
+  border-radius: 8px;
+  background: white;
+  color: #15803d;
+  cursor: pointer;
+  font-weight: bold;
+}
+#backupDati {
+  max-width: 720px;
+  margin: 24px auto;
+  padding: 24px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+#backupDati p {
+  color: #475569;
+}
+
+.esporta-backup,
+.importa-backup {
+  margin: 8px 8px 0 0;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.esporta-backup {
+  background: #2563eb;
+  color: white;
+}
+
+.importa-backup {
+  background: #e2e8f0;
+  color: #334155;
+}
+.navigazione-principale {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 720px;
+  margin: 0 auto 20px;
+}
+
+.navigazione-principale button {
+  flex: 1 1 140px;
+  padding: 11px 12px;
+  border: 0;
+  border-radius: 10px;
+  background: #e2e8f0;
+  color: #334155;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.navigazione-principale .pagina-attiva {
+  background: #2563eb;
+  color: white;
+}
+
+.pagina-app[hidden] {
+  display: none;
+}
+#listaStorico li {
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#listaStorico li:hover,
+#listaStorico .allenamento-selezionato {
+  background: #dbeafe;
+}
+
+#dettaglioStorico {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 12px;
+  background: #f1f5f9;
+}
+
+#dettaglioStorico h3 {
+  margin-top: 0;
+}
+
+#dettaglioStorico ul {
+  padding-left: 20px;
+}
+.contenuto-giorno li > label > .esercizio {
+  display: none;
+}
+
+.controlli-serie {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.controlli-serie span {
+  width: 100%;
+  color: #475569;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.pulsante-serie {
+  width: 38px;
+  height: 38px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #94a3b8;
+  border-radius: 50%;
+  background: white;
+  color: #334155;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.pulsante-serie.serie-completata {
+  border-color: #16a34a;
+  background: #16a34a;
+  color: white;
+}
