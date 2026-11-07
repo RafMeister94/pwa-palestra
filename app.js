@@ -1586,7 +1586,7 @@ tempoWorkout.id = "tempoWorkout";
 const pulsanteIniziaWorkout = document.createElement("button");
 pulsanteIniziaWorkout.type = "button";
 pulsanteIniziaWorkout.id = "iniziaWorkout";
-pulsanteIniziaWorkout.textContent = "Inizia workout";
+pulsanteIniziaWorkout.textContent = "Inizia allenamento";
 
 const pulsanteTerminaWorkout = document.createElement("button");
 pulsanteTerminaWorkout.type = "button";
@@ -1625,6 +1625,7 @@ function secondiWorkoutTrascorsi() {
 function aggiornaTimerWorkout() {
   if (!workoutAttivo) {
     titoloWorkout.textContent = "Nessun workout in corso";
+    tempoWorkout.hidden = true;
     tempoWorkout.textContent = "0:00";
     pulsanteIniziaWorkout.hidden = false;
     pulsanteTerminaWorkout.hidden = true;
@@ -1632,6 +1633,7 @@ function aggiornaTimerWorkout() {
   }
 
   titoloWorkout.textContent = "Workout in corso";
+  tempoWorkout.hidden = false;
   tempoWorkout.textContent = formattaDurataWorkout(
     secondiWorkoutTrascorsi()
   );
