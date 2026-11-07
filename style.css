@@ -430,3 +430,48 @@ button:hover:not(:disabled) {
   background: #16a34a;
   color: white;
 }
+#timerWorkout {
+  margin-bottom: 20px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+}
+
+#titoloWorkout {
+  margin: 0;
+  color: #1e3a8a;
+  font-weight: bold;
+}
+
+#tempoWorkout {
+  margin: 8px 0;
+  color: #1d4ed8;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+#iniziaWorkout,
+#terminaWorkout {
+  margin: 4px 8px 0 0;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#iniziaWorkout {
+  background: #2563eb;
+  color: white;
+}
+
+#terminaWorkout {
+  background: #64748b;
+  color: white;
+}
+
+.durata-workout {
+  color: #1e3a8a;
+  font-weight: bold;
+}
